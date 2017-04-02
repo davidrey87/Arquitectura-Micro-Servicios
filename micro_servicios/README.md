@@ -43,4 +43,11 @@ HOST: https://uaz.cloud.tyk.io/content
             "totalSeasons": "Some text",
             "Response": "Some text"
         }
+
++ Response 400 (text)
+
+        {
+            "title": "Bad Request"
+            "message": "The browser (or proxy) sent a request that this server could not understand."
+        }
 +----------------------------------------------------------------------------------------+ 
