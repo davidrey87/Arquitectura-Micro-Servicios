@@ -46,3 +46,7 @@ HOST: https://uaz.cloud.tyk.io/content
             "title": "Bad Request"
             "message": "The browser (or proxy) sent a request that this server could not understand."
         }
+
+Ejemplo de uso: 
+1. Abrir el navegador
+1. Ingresar a http://localhost:8084/api/v1/information?t=Stranger+Things
