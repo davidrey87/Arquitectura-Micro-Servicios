@@ -49,4 +49,4 @@ HOST: https://uaz.cloud.tyk.io/content
 
 Ejemplo de uso: 
 1. Abrir el navegador
-1. Ingresar a http://localhost:8084/api/v1/information?t=Stranger+Things
+1. Ingresar a https://uaz.cloud.tyk.io/content/api/v1/information?t=Stranger+Things
