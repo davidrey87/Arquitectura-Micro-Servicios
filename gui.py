@@ -41,7 +41,10 @@ def sentiment_analysis():
     # Se obtienen los parámetros que nos permitirán realizar la consulta
     title = request.args.get("t")
     if len(title) is not 0:
+        # La siguiente url es para un servicio local
         url_omdb = urllib.urlopen("http://127.0.0.1:8084/api/v1/information?t=" + title)
+        # La siguiente url es para un servicio en la nube, pregunta al instructor(a) si el servicio está activo
+        # url_omdb = urllib.urlopen("https://uaz.cloud.tyk.io/content/api/v1/information?t=" + title)
         # Se lee la respuesta de OMDB
         json_omdb = url_omdb.read()
         # Se convierte en un JSON la respuesta leída
