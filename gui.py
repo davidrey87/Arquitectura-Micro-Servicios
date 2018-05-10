@@ -3,8 +3,8 @@
 # ----------------------------------------------------------------------------------------------------------------
 # Archivo: gui.py
 # Tarea: 2 Arquitecturas Micro Servicios.
-# Autor(es): Perla Velasco & Yonathan Mtz.
-# Version: 1.2 Abril 2017
+# Autor(es): Perla Velasco & Yonathan Mtz - David Reyes, Sandy de la Rosa, Jose Rodriguez, Manuel Peralta
+# Version: 1.3 Abril 2017
 # Descripción:
 #
 #   Este archivo define la interfaz gráfica del usuario. Recibe dos parámetros que posteriormente son enviados
@@ -41,6 +41,12 @@ def sentiment_analysis():
     # Se obtienen los parámetros que nos permitirán realizar la consulta
     title = request.args.get("t")
     if len(title) is not 0:
+        
+        # La siguiente url es para un servicio local
+        url_sentiment = urllib.urlopen("http://127.0.0.1:8083/api/v1/information?t=" + title)
+        json_sentiment = url_sentiment.read()
+        sentiments = json.loads(json_sentiment)
+
         # La siguiente url es para un servicio local
         url_omdb = urllib.urlopen("http://127.0.0.1:8084/api/v1/information?t=" + title)
         # La siguiente url es para un servicio en la nube, pregunta al instructor(a) si el servicio está activo
@@ -51,6 +57,10 @@ def sentiment_analysis():
         omdb = json.loads(json_omdb)
         # Se llena el JSON que se enviará a la interfaz gráfica para mostrársela al usuario
         json_result = {'omdb': omdb}
+        # Añadimos estaditicas de comentarios
+        omdb["positive"] = sentiments["positive"]
+        omdb["negative"] = sentiments["negative"]
+        omdb["neutral"] = sentiments["neutral"] 
         # Se regresa el template de la interfaz gráfica predefinido así como los datos que deberá cargar
         return render_template("status.html", result=json_result)
     else:

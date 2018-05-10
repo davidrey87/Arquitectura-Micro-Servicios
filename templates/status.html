@@ -80,6 +80,22 @@
 
     </div>
     <!-- /.row -->
+    <!-- Sentiment Graphic -->
+    <div class="row">
+        <h3>Sentiment</h3>
+        <div class="col-md-12">
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ result.omdb['positive'] }}%" aria-valuenow="{{ result.omdb['positive'] }}" aria-valuemin="0" aria-valuemax="100"> {{ result.omdb['positive'] }}% Positive</div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: {{ result.omdb['negative'] }}%" aria-valuenow="{{ result.omdb['negative'] }}" aria-valuemin="0" aria-valuemax="100"> {{ result.omdb['negative'] }}% Negative</div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: {{ result.omdb['neutral'] }}%" aria-valuenow="{{ result.omdb['neutral'] }}" aria-valuemin="0" aria-valuemax="100"> {{ result.omdb['neutral'] }}% Neutral</div>
+            </div>
+        </div>
+
+    </div>
 </div>
 <!-- /.container -->
 
@@ -169,6 +185,8 @@
 <script src="../static/js/bootstrap.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
+
+
 <script>
     //#to-top button appears after scrolling
     var fixed = false;
