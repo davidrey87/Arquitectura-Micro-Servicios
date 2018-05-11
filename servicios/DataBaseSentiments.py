@@ -1,3 +1,28 @@
+# -*- coding: utf-8 -*-
+# !/usr/bin/env python
+# ----------------------------------------------------------------------------------------------------------------
+# Archivo: DataBaseSentiments.py
+# Tarea: 2 Arquitecturas Micro Servicios.
+# Autor(es): David Reyes, Sandy de la Rosa, Jose Rodriguez, Manuel Peralta
+# Version: 1 Octubre 2018
+# Descripción:
+#
+#   Este archivo define el rol de base de datos para un servicio. 
+#   Su funcion es almacenar la informacion de cada peticion.
+#
+#
+#
+#                                        DataBaseSentiments.py
+#           +-----------------------+-------------------------+------------------------+
+#           |  Nombre del elemento  |     Responsabilidad     |      Propiedades       |
+#           +-----------------------+-------------------------+------------------------+
+#           |                       |  - Ofrecer un fichero de|- sqlite3               |
+#           |Bse de datos de alma-  |    almacenamiento de    |                        |
+#           |cenamiento de informa- |    datos.               |                        |
+#           |cion.                  |                         |                        |
+#           +-----------------------+-------------------------+------------------------+
+
+
 import sqlite3
 from sqlite3 import Error
  
@@ -24,7 +49,7 @@ class DataBaseSentiments(object):
     def create_connection(self):
         """ create a database connection to a SQLite database """
         try:
-            conn = sqlite3.connect("dsentiment.sqlite")
+            conn = sqlite3.connect("dbsentiment.sqlite")
             return conn
         except Error as e:
             print(e)
