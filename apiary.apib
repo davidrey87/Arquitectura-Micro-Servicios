@@ -1,0 +1,33 @@
+# nexflix_twitter
+
+Netflix_Twitter is a simple API to request sentiments analysis 
+from movies and series.
+
+## Information [/information]
+
+### Creater Request [GET]
+
++ Request (application/text)
+
+        {
+            [
+                "title": "Breaking Bad"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /information
+
+    + Body
+
+            {
+                "id": 1,
+                "title": "Breaking Bad",
+                "date": "2018-08-05T08:40:51.620Z",
+                "positive": 33,
+                "negative": 17,
+                "neutral": 50
+            }
