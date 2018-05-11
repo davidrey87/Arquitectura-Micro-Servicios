@@ -33,6 +33,8 @@
 import os
 from flask import Flask, abort, render_template, request
 import twitter
+import time
+from DataBaseSentiments import DataBaseSentiments
 import paralleldots
 import urllib, json
 
@@ -52,6 +54,7 @@ def get_information():
   apiTweeter = twitter.Api(consumer_key,consumer_secret,access_token,access_token_secret)
   tweets = apiTweeter.GetSearch(title, count=50)
 
+  date = time.strftime("%c")
   positiveTweets = 0
   negativeTweets = 0
   neutralTweets = 0
@@ -67,8 +70,24 @@ def get_information():
       negativeTweets += 1
     else:
       neutralTweets += 1
-        
+  
+  dbs = DataBaseSentiments()
+
+  idrow = dbs.create_request(
+    dbs.create_connection(), 
+    (
+      title,
+      date, 
+      format(100*positiveTweets/len(tweets)), 
+      format(100*negativeTweets/len(tweets)), 
+      format(100*neutralTweets/len(tweets))
+    )
+  )
+
   data = {}
+  data["id"] = idrow
+  data["title"] = title
+  data["date"] = date
   data['positive'] = format(100*positiveTweets/len(tweets))
   data['negative'] = format(100*negativeTweets/len(tweets))
   data['neutral'] = format(100*neutralTweets/len(tweets))

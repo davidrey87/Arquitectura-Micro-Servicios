@@ -58,9 +58,12 @@ def sentiment_analysis():
         # Se llena el JSON que se enviará a la interfaz gráfica para mostrársela al usuario
         json_result = {'omdb': omdb}
         # Añadimos estaditicas de comentarios
+        omdb["id"] = sentiments["id"]
+        omdb["title"] = sentiments["title"]
+        omdb["date"] = sentiments ["date"]
         omdb["positive"] = sentiments["positive"]
         omdb["negative"] = sentiments["negative"]
-        omdb["neutral"] = sentiments["neutral"] 
+        omdb["neutral"] = sentiments["neutral"]
         # Se regresa el template de la interfaz gráfica predefinido así como los datos que deberá cargar
         return render_template("status.html", result=json_result)
     else:

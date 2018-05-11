@@ -82,7 +82,7 @@
     <!-- /.row -->
     <!-- Sentiment Graphic -->
     <div class="row">
-        <h3>Sentiment</h3>
+        <h3>Sentiment N. {{ result.omdb['id'] }} for {{ result.omdb['title'] }} - {{ result.omdb['date'] }} </h3>
         <div class="col-md-12">
             <div class="progress">
                 <div class="progress-bar bg-success" role="progressbar" style="width: {{ result.omdb['positive'] }}%" aria-valuenow="{{ result.omdb['positive'] }}" aria-valuemin="0" aria-valuemax="100"> {{ result.omdb['positive'] }}% Positive</div>
